@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "project"
+version = "0.1.0"
+description = ""
+authors = ["sakiadachi <sakiadachi.88@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+asgiref = "3.7.2"
+certifi = "2023.7.22"
+charset-normalizer = "3.3.1"
+defusedxml = "0.7.1"
+dj-rest-auth = "5.0.1"
+django = "4.2.6"
+django-cors-headers = "4.3.0"
+djangorestframework = "3.14.0"
+djangorestframework-simplejwt = "5.3.0"
+httpie = "3.2.2"
+idna = "3.4"
+markdown-it-py = "3.0.0"
+mdurl = "0.1.2"
+multidict = "6.0.4"
+pygments = "2.16.1"
+pyjwt = "2.8.0"
+pysocks = "1.7.1"
+pytz = "2023.3.post1"
+requests = "2.31.0"
+requests-toolbelt = "1.0.0"
+rich = "13.6.0"
+setuptools = "68.2.2"
+sqlparse = "0.4.4"
+urllib3 = "2.0.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
