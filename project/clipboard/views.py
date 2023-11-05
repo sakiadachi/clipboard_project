@@ -21,6 +21,14 @@ class ClipboardViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         serializer.save(updated_by=self.request.user)
 
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases
+        for the currently authenticated user.
+        """
+        user = self.request.user
+        return Clipboard.objects.filter(created_by=user)
+
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
