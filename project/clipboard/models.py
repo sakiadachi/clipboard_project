@@ -16,4 +16,4 @@ class Clipboard(models.Model):
 
 
     class Meta:
-        ordering = ['created_date']
+        ordering = ['-created_date']
