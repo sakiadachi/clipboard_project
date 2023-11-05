@@ -8,7 +8,7 @@ class ClipboardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Clipboard
-        fields = ['id', 'title', 'text', 'created_date', 'created_by', 'updated_by']
+        fields = ['uuid', 'title', 'text', 'created_date', 'created_by', 'updated_by']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,4 +16,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'clipboards']
+        fields = ['uuid', 'username', 'clipboards']
