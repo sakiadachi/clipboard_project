@@ -10,7 +10,7 @@ poetry run ./manage.py run server
 ```
 
 - FRONTEND: Starting development server at http://localhost:3000/
-Folk [the front-end repository](https://github.com/sakiadachi/emoji-clipboard-app/)
+-   Folk [the front-end repository](https://github.com/sakiadachi/emoji-clipboard-app/)
 ```
 cd /emoji-clipboard-app
 npm install
