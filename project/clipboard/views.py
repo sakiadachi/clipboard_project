@@ -1,13 +1,9 @@
 from rest_framework import viewsets, generics
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication,BasicAuthentication
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from clipboard.models import Clipboard
-from clipboard.serializers import ClipboardSerializer
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from clipboard.serializers import ClipboardSerializer, RegisterUserSerializer
 from django.contrib.auth.models import User
 from clipboard.serializers import UserSerializer
-from rest_framework.response import Response
 
 
 class ClipboardViewSet(viewsets.ModelViewSet):
@@ -38,3 +34,8 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class RegisterUserView(generics.CreateAPIView) :
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterUserSerializer
