@@ -3,9 +3,10 @@ import uuid
 from django.db import models
 
 class Clipboard(models.Model):
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False, db_index=True)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, db_index=True, unique=True)
     title = models.CharField(max_length=100)
     text = models.TextField()
+    order = models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey('auth.User', on_delete=models.SET_NULL, related_name='created_by', blank=True, null=True)
     updated_by = models.ForeignKey('auth.User', on_delete=models.SET_NULL, related_name='updated_by', blank=True, null=True)
@@ -16,4 +17,4 @@ class Clipboard(models.Model):
 
 
     class Meta:
-        ordering = ['-created_date']
+        ordering = ['-order','-created_date']

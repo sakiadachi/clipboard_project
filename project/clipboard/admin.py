@@ -8,5 +8,5 @@ admin.site.register(Session)
 
 admin.site.register(Clipboard)
 class Clipboard(admin.ModelAdmin):
-    list_display = ['id', 'title', 'text', 'created_date', 'created_by', 'updated_by']
+    list_display =  '__all__'
 

@@ -10,7 +10,7 @@ class ClipboardSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Clipboard
-        fields = ['uuid', 'title', 'text', 'created_date', 'created_by', 'updated_by']
+        fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):
