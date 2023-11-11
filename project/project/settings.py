@@ -165,3 +165,6 @@ CORS_ALLOW_CREDENTIALS = True
 # CSRF
 CSRF_TRUSTED_ORIGINS = ("http://localhost:3000",)
 
+# Whitenoise
+# https://whitenoise.readthedocs.io/en/latest/django.html
+STATIC_ROOT = BASE_DIR / "staticfiles"
