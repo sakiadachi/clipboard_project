@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from typing import Optional
 
 import dj_database_url
 from dotenv import (
@@ -57,7 +58,9 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # Professional stunt driver, do not attempt
+    "project.middleware.DisableCSRFMiddleware",
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -153,17 +156,29 @@ REST_AUTH = {
 
 
 # SESSION COOKIE
-SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = "None"
+# SESSION_COOKIE_DOMAIN = os.environ.get("SESSION_COOKIE_DOMAIN", None)
+
+def maybe_split(value: Optional[str]) -> list[str]:
+    if value is None:
+        return []
+    return value.split(",")
 
 # CORS
 CORS_ALLOWED_ORIGINS = (
     'http://localhost:3000',
+    *maybe_split(os.environ.get("CORS_ALLOWED_ORIGIN", None)),
 )
 CORS_ALLOW_CREDENTIALS = True
 
 # CSRF
-CSRF_TRUSTED_ORIGINS = ("http://localhost:3000",)
+CSRF_TRUSTED_ORIGINS = (
+    "http://localhost:3000",
+    *maybe_split(os.environ.get("CSRF_TRUSTED_ORIGIN", None)),
+)
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
 
 # Whitenoise
 # https://whitenoise.readthedocs.io/en/latest/django.html
